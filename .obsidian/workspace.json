@@ -1,0 +1,157 @@
+{
+  "main": {
+    "id": "6383219c99839c4a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d1cd92ea83ba50c8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "223608b2ff8bc598",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "开题/开题报告v3.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3c9424705f0cb7bc",
+    "type": "split",
+    "children": [
+      {
+        "id": "1bd7c9d98ad3eca1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "acd5e22e34e1b341",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "fb79162d1c55c545",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4960b5c05d5d0248",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 513.5110359191895
+  },
+  "right": {
+    "id": "f45e81fe7eb52446",
+    "type": "split",
+    "children": [
+      {
+        "id": "cbe759f78deea190",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86841351fbe3bd63",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "开题/开题报告v3.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4583590cbd4aa05b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "开题/开题报告v3.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6006d51c3c4dc2a1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9936008c6f5cf416",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "开题/开题报告v3.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "223608b2ff8bc598",
+  "lastOpenFiles": [
+    "开题/开题报告v2.pdf",
+    "开题/开题报告v3.md",
+    "开题/开题报告v2.md",
+    "开题/开题明细.md",
+    "开题"
+  ]
+}
