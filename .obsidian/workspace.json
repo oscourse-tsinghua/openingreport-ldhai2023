@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "开题/开题报告v3.md",
-                "mode": "preview",
+                "file": "开题/微内核异步设计方案.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "开题/开题报告v3.md",
+                "file": "开题/微内核异步设计方案.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "开题/开题报告v3.md",
+                "file": "开题/微内核异步设计方案.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "开题/开题报告v3.md"
+                "file": "开题/微内核异步设计方案.md"
               }
             }
           }
@@ -148,10 +148,11 @@
   },
   "active": "223608b2ff8bc598",
   "lastOpenFiles": [
+    "开题/images/async_syscall.png",
     "开题/微内核异步设计方案.md",
+    "开题/开题报告v2.pdf",
     "开题/开题报告v3.md",
     "开题/开题报告v2.md",
-    "开题/开题报告v2.pdf",
     "开题/开题明细.md",
     "开题/images",
     "开题/images/async_ipc.png",
