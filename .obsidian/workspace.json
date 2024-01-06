@@ -146,8 +146,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "223608b2ff8bc598",
+  "active": "acd5e22e34e1b341",
   "lastOpenFiles": [
+    "开题/images/async_syscall.png",
     "开题/images/async_syscall.png",
     "开题/微内核异步设计方案.md",
     "开题/开题报告v2.pdf",
