@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d1cd92ea83ba50c8",
+        "id": "04c07ff4a07a6da6",
         "type": "tabs",
         "children": [
           {
-            "id": "223608b2ff8bc598",
+            "id": "3bcaa1edfa93d8b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "开题/微内核异步设计方案.md",
+                "file": "开题/微内核异步设计方案v2.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "开题/微内核异步设计方案.md",
+                "file": "开题/微内核异步设计方案v2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "开题/微内核异步设计方案.md",
+                "file": "开题/微内核异步设计方案v2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "开题/微内核异步设计方案.md"
+                "file": "开题/微内核异步设计方案v2.md"
               }
             }
           }
@@ -146,11 +146,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "acd5e22e34e1b341",
+  "active": "3bcaa1edfa93d8b7",
   "lastOpenFiles": [
-    "开题/images/async_syscall.png",
-    "开题/images/async_syscall.png",
     "开题/微内核异步设计方案.md",
+    "开题/微内核异步设计方案v2.md",
+    "README.md",
+    "开题/images/async_ipc_v2.png",
+    "Pasted image 20240107163113.png",
+    "开题/images/async_syscall_v2.png",
+    "开题/images/async_syscall.png",
+    "开题/images/async_syscall.png",
     "开题/开题报告v2.pdf",
     "开题/开题报告v3.md",
     "开题/开题报告v2.md",
