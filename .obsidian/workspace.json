@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "开题/微内核异步设计方案v2.md",
+                "file": "开题/开题报告v3.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1071bd7d25783404",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "开题/讨论记录/20240228-与廖东海讨论微内核.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 513.5110359191895
+    "width": 331.50390243530273
   },
   "right": {
     "id": "f45e81fe7eb52446",
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "开题/微内核异步设计方案v2.md",
+                "file": "开题/讨论记录/20240228-与廖东海讨论微内核.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "开题/微内核异步设计方案v2.md",
+                "file": "开题/讨论记录/20240228-与廖东海讨论微内核.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "开题/微内核异步设计方案v2.md"
+                "file": "开题/讨论记录/20240228-与廖东海讨论微内核.md"
               }
             }
           }
@@ -146,19 +159,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3bcaa1edfa93d8b7",
+  "active": "1071bd7d25783404",
   "lastOpenFiles": [
-    "开题/微内核异步设计方案.md",
+    "开题/技术文档/基于用户态中断的微内核通知机制.md",
+    "开题/讨论记录/20240228-与廖东海讨论微内核.md",
+    "开题/技术文档",
+    "开题/讨论记录",
+    "开题/images/Untitled",
+    "开题/images/Pasted image 20240107163113.png",
+    "开题/开题报告v3.md",
+    "开题/开题报告v2.md",
+    "开题/开题报告v2.pdf",
     "开题/微内核异步设计方案v2.md",
+    "开题/微内核异步设计方案.md",
+    "开题/开题报告v3.pdf",
+    "LICENSE",
     "README.md",
     "开题/images/async_ipc_v2.png",
-    "Pasted image 20240107163113.png",
     "开题/images/async_syscall_v2.png",
     "开题/images/async_syscall.png",
     "开题/images/async_syscall.png",
-    "开题/开题报告v2.pdf",
-    "开题/开题报告v3.md",
-    "开题/开题报告v2.md",
     "开题/开题明细.md",
     "开题/images",
     "开题/images/async_ipc.png",
