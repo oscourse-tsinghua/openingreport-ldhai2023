@@ -4,17 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "04c07ff4a07a6da6",
+        "id": "b3165b4be9e7c920",
         "type": "tabs",
         "children": [
           {
-            "id": "1071bd7d25783404",
+            "id": "9a512eaec93c4777",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "开题/images/Throughput_Workload.png"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -83,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "开题/images/Throughput_Workload.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "开题/images/Throughput_Workload.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "开题/images/Throughput_Workload.png"
-              }
+              "state": {}
             }
           }
         ]
@@ -144,8 +138,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1071bd7d25783404",
+  "active": "9a512eaec93c4777",
   "lastOpenFiles": [
+    "开题/images/Throughput_Workload.png",
     "开题/开题报告v3.pdf",
     "开题/测试/Microbenchmark 测试方案.md",
     "开题/技术文档/基于用户态中断的微内核通知机制.md",
@@ -153,7 +148,6 @@
     "开题/images/sel4_ntfn_cap_graph.png",
     "开题/测试/网络协议栈测试方案.md",
     "开题/开题报告v3.md",
-    "开题/images/Throughput_Workload.png",
     "开题/images/Pasted image 20240107163113.png",
     "开题/images/Mixed_Workload.png",
     "开题/测试",
