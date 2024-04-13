@@ -11,8 +11,12 @@
             "id": "9a512eaec93c4777",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "开题/测试/测试结果.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "开题/测试/测试结果.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "开题/测试/测试结果.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "开题/测试/测试结果.md"
+              }
             }
           }
         ]
@@ -138,18 +146,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9a512eaec93c4777",
+  "active": "acd5e22e34e1b341",
   "lastOpenFiles": [
-    "开题/images/Throughput_Workload.png",
-    "开题/开题报告v3.pdf",
-    "开题/测试/Microbenchmark 测试方案.md",
+    "开题/测试/~$IPC性能.xlsx",
+    "开题/images/NWP_call_delay_avg.png",
+    "Pasted image 20240413093933.png",
+    "开题/测试/测试结果.md",
+    "Pasted image 20240413093923.png",
+    "开题/images/NWP_call_throughput.png",
+    "开题/images/NWP_write.png",
+    "开题/测试/测试方案.md",
+    "开题/images/NWP_read.png",
+    "Pasted image 20240412150400.png",
+    "开题/images/call_compare.png",
+    "开题/images/async_call_uintr_cnt.png",
+    "开题/images/async_call_cpu_cycle.png",
     "开题/技术文档/基于用户态中断的微内核通知机制.md",
-    "开题/images/rel4_ntfn_cap_graph.png",
-    "开题/images/sel4_ntfn_cap_graph.png",
     "开题/测试/网络协议栈测试方案.md",
+    "开题/测试/Untitled.md",
+    "开题/开题报告v3.pdf",
     "开题/开题报告v3.md",
-    "开题/images/Pasted image 20240107163113.png",
-    "开题/images/Mixed_Workload.png",
     "开题/测试",
     "开题/讨论记录/20240228-与廖东海讨论微内核.md",
     "开题/技术文档",
@@ -161,13 +177,8 @@
     "开题/微内核异步设计方案.md",
     "LICENSE",
     "README.md",
-    "开题/images/async_ipc_v2.png",
-    "开题/images/async_syscall_v2.png",
-    "开题/images/async_syscall.png",
-    "开题/images/async_syscall.png",
     "开题/开题明细.md",
     "开题/images",
-    "开题/images/async_ipc.png",
     "开题"
   ]
 }
