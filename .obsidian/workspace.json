@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "开题/测试/测试结果.md",
+                "file": "开题/测试/测试结果-fpga.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "开题/测试/测试结果.md",
+                "file": "开题/测试/测试结果-fpga.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "开题/测试/测试结果.md",
+                "file": "开题/测试/测试结果-fpga.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "开题/测试/测试结果.md"
+                "file": "开题/测试/测试结果-fpga.md"
               }
             }
           }
@@ -146,24 +146,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "acd5e22e34e1b341",
+  "active": "9a512eaec93c4777",
   "lastOpenFiles": [
+    "开题/images/uintr_fpga2.png",
+    "开题/images/async_ipc_fpga2.png",
+    "开题/images/uintr_fpga1.png",
+    "开题/images/async_ipc_fpga1.png",
+    "开题/测试/测试结果-qemu.md",
+    "开题/测试/测试结果-fpga.md",
+    "开题/images/uintr_fpga0.png",
+    "开题/images/async_ipc_fpga_0.png",
     "开题/测试/~$IPC性能.xlsx",
     "开题/images/NWP_call_delay_avg.png",
     "Pasted image 20240413093933.png",
-    "开题/测试/测试结果.md",
     "Pasted image 20240413093923.png",
     "开题/images/NWP_call_throughput.png",
     "开题/images/NWP_write.png",
     "开题/测试/测试方案.md",
-    "开题/images/NWP_read.png",
-    "Pasted image 20240412150400.png",
-    "开题/images/call_compare.png",
-    "开题/images/async_call_uintr_cnt.png",
-    "开题/images/async_call_cpu_cycle.png",
     "开题/技术文档/基于用户态中断的微内核通知机制.md",
     "开题/测试/网络协议栈测试方案.md",
-    "开题/测试/Untitled.md",
     "开题/开题报告v3.pdf",
     "开题/开题报告v3.md",
     "开题/测试",
