@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "开题/测试/测试结果-fpga.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "开题/测试/测试结果-fpga.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "开题/测试/测试结果-fpga.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "开题/测试/测试结果-fpga.md"
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md"
               }
             }
           }
@@ -148,38 +148,43 @@
   },
   "active": "9a512eaec93c4777",
   "lastOpenFiles": [
-    "开题/images/uintr_fpga2.png",
-    "开题/images/async_ipc_fpga2.png",
-    "开题/images/uintr_fpga1.png",
-    "开题/images/async_ipc_fpga1.png",
-    "开题/测试/测试结果-qemu.md",
+    "测试/测试结果-fpga.md",
+    "测试/测试结果-qemu.md",
+    "技术文档/基于用户态中断的微内核通知机制.md",
+    "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
+    "测试/测试方案.md",
+    "开题/开题明细.md",
+    "开题/微内核异步设计方案.md",
+    "开题/微内核异步设计方案v2.md",
+    "images/fpga_socket_call_delay.png",
+    "images/fpga_socket_call_rps.png",
+    "images/fpga_socket_write.png",
+    "images/fpga_socket_read.png",
+    "测试/~$IPC性能.xlsx",
+    "开题/开题报告v3.md",
+    "开题/开题报告v3.pdf",
+    "开题/开题报告v2.md",
+    "paper",
+    "论文",
+    "images/async_call_uintr_cnt.png",
+    "images/call_compare.png",
+    "images/async_syscall.png",
+    "images/NWP_call_throughput.png",
+    "images/NWP_call_delay_avg.png",
+    "images/background.drawio",
+    "images/uintr_fpga1.png",
+    "images",
+    "讨论记录/20240228-与廖东海讨论微内核.md",
+    "讨论记录",
     "开题/测试/测试结果-fpga.md",
-    "开题/images/uintr_fpga0.png",
-    "开题/images/async_ipc_fpga_0.png",
-    "开题/测试/~$IPC性能.xlsx",
-    "开题/images/NWP_call_delay_avg.png",
-    "Pasted image 20240413093933.png",
-    "Pasted image 20240413093923.png",
-    "开题/images/NWP_call_throughput.png",
-    "开题/images/NWP_write.png",
+    "测试/IPC性能.xlsx",
+    "测试",
+    "技术文档",
+    "开题/测试/测试结果-qemu.md",
     "开题/测试/测试方案.md",
     "开题/技术文档/基于用户态中断的微内核通知机制.md",
     "开题/测试/网络协议栈测试方案.md",
-    "开题/开题报告v3.pdf",
-    "开题/开题报告v3.md",
-    "开题/测试",
     "开题/讨论记录/20240228-与廖东海讨论微内核.md",
-    "开题/技术文档",
-    "开题/讨论记录",
-    "开题/images/Untitled",
-    "开题/开题报告v2.md",
-    "开题/开题报告v2.pdf",
-    "开题/微内核异步设计方案v2.md",
-    "开题/微内核异步设计方案.md",
-    "LICENSE",
-    "README.md",
-    "开题/开题明细.md",
-    "开题/images",
-    "开题"
+    "README.md"
   ]
 }
