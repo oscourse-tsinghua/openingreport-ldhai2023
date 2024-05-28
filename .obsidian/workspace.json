@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md"
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md"
               }
             }
           }
@@ -148,18 +148,20 @@
   },
   "active": "fa5c55c476a9ae55",
   "lastOpenFiles": [
+    "paper/论文大纲.md",
+    "paper/ReL4, 高性能异步微内核设计与实现.md",
+    "开题/开题报告v3.md",
+    "开题/开题报告v3.pdf",
+    "开题/开题明细.md",
     "技术文档/微内核异步设计方案v2.md",
     "技术文档/微内核异步设计方案.md",
     "技术文档/基于用户态中断的微内核通知机制.md",
-    "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
     "paper/2024.05.24 讨论.md",
     "测试/~$IPC性能.xlsx",
     "测试/测试结果-fpga.md",
     "测试/测试结果-qemu.md",
     "README.md",
     "测试/测试方案.md",
-    "开题/开题报告v3.md",
-    "开题/开题报告v3.pdf",
     "images/workload_uintr_freq.png",
     "讨论记录/20240509-实验讨论.md",
     "images/fpga_socket_call_delay.png",
@@ -168,7 +170,6 @@
     "images/fpga_socket_write.png",
     "images/fpga_socket_read.png",
     "images/fpga_socket_read.png",
-    "开题/开题明细.md",
     "images/fpga_socket_call_delay.png",
     "images/fpga_socket_write.png",
     "开题/开题报告v2.md",
