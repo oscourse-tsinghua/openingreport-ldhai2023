@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "paper/2024.05.24 讨论.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "paper/2024.05.24 讨论.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "paper/2024.05.24 讨论.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "paper/2024.05.24 讨论.md"
+                "file": "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md"
               }
             }
           }
@@ -149,11 +149,11 @@
   "active": "fa5c55c476a9ae55",
   "lastOpenFiles": [
     "技术文档/微内核异步设计方案v2.md",
-    "paper/2024.05.24 讨论.md",
-    "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
-    "测试/~$IPC性能.xlsx",
-    "技术文档/基于用户态中断的微内核通知机制.md",
     "技术文档/微内核异步设计方案.md",
+    "技术文档/基于用户态中断的微内核通知机制.md",
+    "paper/ReL4, 高性能异步微内核设计与实现-论文大纲.md",
+    "paper/2024.05.24 讨论.md",
+    "测试/~$IPC性能.xlsx",
     "测试/测试结果-fpga.md",
     "测试/测试结果-qemu.md",
     "README.md",
