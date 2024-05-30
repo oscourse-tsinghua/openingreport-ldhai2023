@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "2fd71f9e6e1e91eb",
+        "id": "8778808511c278eb",
         "type": "tabs",
         "children": [
           {
-            "id": "fa5c55c476a9ae55",
+            "id": "a6d9c516e4e66fd6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "技术文档/微内核异步设计方案v2.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "技术文档/微内核异步设计方案v2.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "技术文档/微内核异步设计方案v2.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "技术文档/微内核异步设计方案v2.md"
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md"
               }
             }
           }
@@ -146,19 +146,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fa5c55c476a9ae55",
+  "active": "a6d9c516e4e66fd6",
   "lastOpenFiles": [
+    "图片链接.md",
     "paper/ReL4, 高性能异步微内核设计与实现.md",
-    "技术文档/微内核异步设计方案v2.md",
-    "README.md",
+    "images/uintr_for_cap.png",
+    "images/uintr_for_cap.png",
+    "uintr_for_cap.pdf",
+    "images/uintr_for_capability.png",
     "技术文档/基于用户态中断的微内核通知机制.md",
-    "paper/论文大纲.md",
+    "images/background.drawio.crswap",
+    "技术文档/微内核异步设计方案v2.md",
+    "技术文档/微内核异步设计方案.md",
+    "测试/~$IPC性能.xlsx",
     "开题/开题报告v3.md",
     "开题/开题报告v3.pdf",
+    "README.md",
+    "paper/论文大纲.md",
     "开题/开题明细.md",
-    "技术文档/微内核异步设计方案.md",
     "paper/2024.05.24 讨论.md",
-    "测试/~$IPC性能.xlsx",
     "测试/测试结果-fpga.md",
     "测试/测试结果-qemu.md",
     "测试/测试方案.md",
@@ -170,20 +176,15 @@
     "images/fpga_socket_write.png",
     "images/fpga_socket_read.png",
     "images/fpga_socket_read.png",
-    "images/fpga_socket_call_delay.png",
-    "images/fpga_socket_write.png",
     "开题/开题报告v2.md",
     "paper",
     "论文",
-    "images/async_call_uintr_cnt.png",
     "images/background.drawio",
     "images",
     "讨论记录/20240228-与廖东海讨论微内核.md",
     "讨论记录",
     "开题/测试/测试结果-fpga.md",
     "测试/IPC性能.xlsx",
-    "测试",
-    "技术文档",
     "开题/测试/测试结果-qemu.md",
     "开题/测试/测试方案.md",
     "开题/技术文档/基于用户态中断的微内核通知机制.md",
