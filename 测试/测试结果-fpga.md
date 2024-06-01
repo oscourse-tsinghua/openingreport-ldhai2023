@@ -90,3 +90,10 @@ TCP Server交替进行读写操作（即客户端进行一个Call）。从上面
 每个call的平均延迟符合随并发度提升线性增长的预期。
 
 ![](../images/fpga_socket_call_delay.png)
+
+# 3. 内存分配器
+
+![](../images/mem_alloc_fpga.png)
+
+
+![](../images/mem_alloc_fpga2.png)
