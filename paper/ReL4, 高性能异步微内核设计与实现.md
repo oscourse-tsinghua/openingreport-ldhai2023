@@ -220,7 +220,7 @@ U-notification相比于原始的通知机制在通信权限控制方面仍然有
 
 模拟的Web服务器应用场景由三部分组成，一部分是运行在PC上的客户端，在启动时与运行在FPGA上的TCP Server建立若干个连接，并不断地向服务端发送64字节的数据，并接收服务器的响应；第二部分是FPGA中的网络协议栈（NW Stack Server），集成了网卡驱动的代码，通过smoltcp协议栈维护每个连接的状态信息，负责从网卡中接收数据并进行协议处理后返回给TCP Server，以及从TCP Server接收数据并通过网卡发出；第三部分是TCP Server，通过NW Stack Server接收客户端发送过来的请求，在处理完成之后返回响应后通过NW Stack Server发送给客户端。最后，PC 上的客户端计算发送每个请求和接收响应之间的时间延迟，并计算固定时间段内的消息吞吐量。我们通过分析不同配置下 TCP Server 的时间延迟和吞吐量来评估 ReL4。
 
-![](../images/TCP_Server.png)
+![](../scripts/tcp_test.png)
 
 ## 5.3 内存分配器
 
