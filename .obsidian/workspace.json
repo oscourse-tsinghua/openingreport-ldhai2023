@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "7f7cf12dc077f58a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -146,16 +159,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e0e98595c180d49e",
+  "active": "7f7cf12dc077f58a",
   "lastOpenFiles": [
-    "paper/论文大纲.md",
+    "async_syscall_framework.png",
     "paper/ReL4, 高性能异步微内核设计与实现.md",
+    "images/async_syscall_framework.png",
+    "images/async_syscall.drawio.crswap",
+    "images/async_syscall.drawio",
+    "images/rel4_ntfn_cap_graph.png",
+    "images/shared_buffer.png",
+    "paper/2024.05.24 讨论.md",
+    "paper/论文大纲.md",
+    "images/async_framework.drawio.crswap",
+    "images/shared_buffer.drawio",
+    "images/uintr_for_ntfn.drawio.crswap",
+    "讨论记录/20240619-向勇的修改意见.md",
+    "讨论记录/20240916-向勇的修改意见.md",
     "images/framework.png",
     "images/framework.drawio",
     "技术文档/基于用户态中断的微内核通知机制.md",
-    "讨论记录/20240619-向勇的修改意见.md",
     "讨论记录/20240228-与廖东海讨论微内核.md",
-    "paper/2024.05.24 讨论.md",
     "scripts/syscall_test.png",
     "scripts/plt_syscall_test.py",
     "测试/~$IPC性能.xlsx",
@@ -165,21 +188,12 @@
     "scripts/plt_tcp_test.py",
     "scripts/ipc_test.png",
     "scripts/多维展示显示数据.html",
-    "scripts/收入支出柱状图.html",
-    "scripts/render.html",
     "scripts/收入支出柱状图.png",
-    "scripts/plt_ipc_test.py",
-    "scripts",
     "讨论记录/20240509-实验讨论.md",
     "images/IPC_test.png",
     "images/TCP_Server.png",
-    "Pasted image 20240618094334.png",
-    "images/uintr_cnt.png",
     "测试/测试结果-qemu.md",
-    "开题/images/IPC_cost.png",
     "测试/测试方案.md",
-    "images/async_framework.png",
-    "images/async_framework.drawio.crswap",
     "开题/开题明细.md",
     "开题/开题报告v3.md",
     "图片链接.md",
