@@ -9,9 +9,9 @@
 
 # 1. 引言
 
-微内核相比宏内核具有显著优势。它采用模块化设计，提高了系统的可靠性、灵活性和安全性，微内核更易于维护和升级，具有更强的可移植性和定制能力，其设计理念适合分布式系统，允许动态加载服务，便于调试，核心功能的分离减少了系统受攻击的风险。这些特性使微内核在需要高可靠性、安全性和适应性的环境中特别有价值，然而，自从微内核提出以来，最大的性能瓶颈就是进程间通信（IPC），30年前Liedtke提出的L4通过对内核系统的重新设计，证明了微内核的IPC也可以很快，之后以seL4为代表的现代微内核的IPC框架也基本延续了最初的L4，以同步IPC作为主要的通信方式，同时引入异步的通知机制来简化多线程程序设计，提升多核的利用率。
+微内核相比宏内核具有显著优势[1]。它采用模块化设计，提高了系统的可靠性、灵活性和安全性，微内核更易于维护和升级，具有更强的可移植性和定制能力，其设计理念适合分布式系统，允许动态加载服务，便于调试，核心功能的分离减少了系统受攻击的风险。这些特性使微内核在需要高可靠性、安全性和适应性的环境中特别有价值。然而，自从微内核提出以来，最大的性能瓶颈就是进程间通信（IPC）[2]，30年前Liedtke提出的L4[3]通过对内核系统的重新设计，证明了微内核的IPC也可以很快，之后以seL4[4]为代表的现代微内核的IPC框架也基本延续了最初的L4，以同步IPC作为主要的通信方式，同时引入异步的通知机制来简化多线程程序设计，提升多核的利用率。
 
-然而随着软硬件生态的发展，seL4中的IPC通信方式并不能很好的满足部分应用的性能要求。首先是软件对系统有了新的要求，随着软件复杂性的提升，系统级软件如数据库管理系统、网络服务器等，需要进行大量的系统调用和IPC，这要求系统能够以快速高效的形式处理大量系统调用和IPC，而微内核将操作系统的大部分服务（如网络协议栈、文件系统等）移到用户态，从而使得IPC数量和频率激增，内核态与用户态之间的特权级切换成为性能瓶颈。此外，新出现的硬件漏洞如Meltdown 和 Spectre漏洞促使 Linux 使用 KPTI 补丁来分离用户程序和内核的页表，进一步增加了陷入内核的开销，seL4 中也有类似的机制。最后，外设速度越来越快，而现代微内核的外设驱动往往存在于用户态，外设中断被转化为通知信号，需要用户态驱动主动陷入内核来进行接收，这在一定程度上成为了外设驱动的性能瓶颈。
+然而随着软硬件生态的发展，seL4中的IPC通信方式并不能很好的满足部分应用的性能要求。首先是软件对系统有了新的要求，随着软件复杂性的提升，系统级软件如数据库管理系统、网络服务器等，需要进行大量的系统调用和IPC[5]，这要求系统能够以快速高效的形式处理大量系统调用和IPC，而微内核将操作系统的大部分服务（如网络协议栈、文件系统等）移到用户态，从而使得IPC数量和频率激增，内核态与用户态之间的特权级切换成为性能瓶颈。此外，新出现的硬件漏洞如Meltdown[6]和 Spectre[7]漏洞促使 Linux 使用 KPTI[8] 补丁来分离用户程序和内核的页表，进一步增加了陷入内核的开销，seL4 中也有类似的机制。最后，外设速度越来越快，而现代微内核的外设驱动往往存在于用户态，外设中断被转化为通知信号，需要用户态驱动主动陷入内核来进行接收，这在一定程度上成为了外设驱动的性能瓶颈[9]。
 
 综上所述，以seL4为代表的现代微内核在设计上有两点不足，导致了特权级切换成为系统的性能瓶颈：1）通知机制需要内核转发。2）系统调用和同步IPC需要频繁的出入内核。
 
@@ -28,19 +28,19 @@
 
 现代微内核的大部分IPC优化始于Liedtke提出的L4，由于之前的微内核IPC存在性能瓶颈，L4从硬件优化、系统架构、软件接口的各个方面对IPC进行了重新设计。其中的优化角度可以简单划分为内核路径优化和上下文切换优化。
 
-对于内核路径优化，L4通过物理消息寄存器来传递短消息，从而避免了内存拷贝，然而随着访存速度的加快，消息寄存器的零拷贝优化带来的收益逐渐减弱，使用物理寄存器导致的平台依赖和编译器优化失效反而限制了系统的性能，因此物理的消息寄存器逐渐被现代微内核以虚拟消息寄存器代替；此外，L4使用临时映射的形式来进行长消息的传递，避免多余的内存拷贝，但却在内核中引入了缺页异常的可能性没增加了内核行为的复杂性，现代微内核一般放弃了这个优化；针对常用且普遍的IPC场景，L4设计了专门的快速路径，避免了复杂繁琐的参数解析和任务调度，然而快速路径对消息长度、任务优先级有着严格的限制，也无法对多核心进行支持。
+对于内核路径优化，L4通过物理消息寄存器来传递短消息，从而避免了内存拷贝，然而随着访存速度的加快，消息寄存器的零拷贝优化带来的收益逐渐减弱，使用物理寄存器导致的平台依赖和编译器优化失效反而限制了系统的性能[10]，因此物理的消息寄存器逐渐被现代微内核以虚拟消息寄存器代替；此外，L4使用临时映射的形式来进行长消息的传递，避免多余的内存拷贝，但却在内核中引入了缺页异常的可能性没增加了内核行为的复杂性[10]，现代微内核一般放弃了这个优化；针对常用且普遍的IPC场景，L4设计了专门的快速路径，避免了复杂繁琐的参数解析和任务调度，然而快速路径对消息长度、任务优先级有着严格的限制，也无法对多核心进行支持。
 
-对于特权级的切换优化，L4使用的物理消息寄存器在一定程度上减少了上下文切换的开销，但其副作用超过了优化收益导致其被虚拟消息寄存器代替；同时L4敏锐地观察到大部分IPC通信遵循C/S模型，因此通过组合系统调用的形式，将Send + Reply 组合为 Call，将Reply + Recv 组合成ReplyRecv，从而减少了特权级切换的频率，该优化至今作为现代微内核的重要优化手段，但仍然无法避免特权级的切换；此外，L4通过通过ASID机制，在快表项中维护地址空间标识符，减少快表冲刷的频率，缓解了快表污染的问题，然而依然无法避免特权级切换带来的快表污染和缓存失效。
+对于特权级的切换优化，L4使用的物理消息寄存器在一定程度上减少了上下文切换的开销，但其副作用超过了优化收益导致其被虚拟消息寄存器代替[10]；同时L4敏锐地观察到大部分IPC通信遵循C/S模型，因此通过组合系统调用的形式，将Send + Reply 组合为 Call，将Reply + Recv 组合成ReplyRecv，从而减少了特权级切换的频率，该优化至今作为现代微内核的重要优化手段，但仍然无法避免特权级的切换；此外，L4通过通过ASID机制，在快表项中维护地址空间标识符，减少快表冲刷的频率，缓解了快表污染的问题，然而依然无法避免特权级切换带来的快表污染和缓存失效。
 
 总而言之，现代微内核在单核环境下的IPC内核路径上的优化已经较为完善，在最理想的情况下仅需要两次特权级切换，然而对多核环境下，由于需要核间中断，无法进入快速路径，导致多核下的IPC内核路径依旧冗长。而现代微内核在特权级切换的优化方面仍然停留在缓解开销的层面上，无法从根本上消除特权级的切换。
 
 本文聚焦现代微内核架构设计中的特权级切换开销，旨在设计一种新型的IPC架构，使得减少甚至消除IPC和系统调用中的特权级切换，先前已经有大量的工作从软硬件的角度致力于减少特权级切换开销。
 
-从硬件出发的角度，大多数工作通过设计特殊的硬件或者特殊的指令来实现内核实现IPC。如SkyBridge允许进程在IPC中直接切换到目标进程的虚拟地址空间并调用目标函数，它通过精心设计一个虚拟化层（Root Kernel）提供虚拟化的功能，通过VMFUNC地址空间的直接切换，并通过其他一系列软件手段来保证安全性，但这种方案仅适用于虚拟化环境中。XPC则直接使用硬件来提供一个无需经过内核的同步功能调用，并提供一种新的空间映射机制用于调用者与被调用者之间的零拷贝消息传递，然而该方案没有相应的硬件标准，也没有一款通用的处理器对其进行支持。这些方法都基于特殊的环境或者没有标准化的硬件来实现，适用范围有限
+从硬件出发的角度，大多数工作通过设计特殊的硬件或者特殊的指令来实现内核实现IPC。如SkyBridge[11]允许进程在IPC中直接切换到目标进程的虚拟地址空间并调用目标函数，它通过精心设计一个虚拟化层（Root Kernel）提供虚拟化的功能，通过VMFUNC地址空间的直接切换，并通过其他一系列软件手段来保证安全性，但这种方案仅适用于虚拟化环境中。XPC[12]则直接使用硬件来提供一个无需经过内核的同步功能调用，并提供一种新的空间映射机制用于调用者与被调用者之间的零拷贝消息传递，然而该方案没有相应的硬件标准，也没有一款通用的处理器对其进行支持。这些方法都基于特殊的环境或者没有标准化的硬件来实现，适用范围有限
 
-从软件出发的角度，相关工作主要分为两类：第一类方法通过将用户态和内核态的功能扁平化来减少内核与用户态的切换开销，如unikernel将所有用户态代码都映射到内核态执行，Userspace Bypass通过动态二进制分析将两个系统调用之间的用户态代码移入内核态执行，从而减少陷入内核的次数，kernel bypass则通过将硬件驱动（传统内核的功能）移入用户态，从而减少上下文的切换。这些方法要么需要特殊的硬件支持，要么难以与微内核的设计理念兼容，因此都只能提供一定的参考价值。第二类方法则是允许用户空间对多个系统调用请求排队，并仅通过一个系统调用来将他们注册给内核。如FlexSC通过在用户态设计一个用户态线程的运行时，将用户态线程发起的系统调用自动收集，然后陷入内核态进行批量执行。该方法虽然可以有效的减少陷入内核的次数，但如何设置提交的时机难以把握，过短的提交间隔将导致切换次数增加，过长的提交间隔则会导致空闲的CPU空转。
+从软件出发的角度，相关工作主要分为两类：第一类方法通过将用户态和内核态的功能扁平化来减少内核与用户态的切换开销，如unikernel[13, 14, 15]将所有用户态代码都映射到内核态执行，Userspace Bypass[16]通过动态二进制分析将两个系统调用之间的用户态代码移入内核态执行，从而减少陷入内核的次数，kernel bypass[17, 18]则通过将硬件驱动（传统内核的功能）移入用户态，从而减少上下文的切换。这些方法要么需要特殊的硬件支持，要么难以与微内核的设计理念兼容，因此都只能提供一定的参考价值。第二类方法则是允许用户空间对多个系统调用请求排队，并仅通过一个系统调用来将他们注册给内核。如FlexSC[19]通过在用户态设计一个用户态线程的运行时，将用户态线程发起的系统调用自动收集，然后陷入内核态进行批量执行。该方法虽然可以有效的减少陷入内核的次数，但如何设置提交的时机难以把握，过短的提交间隔将导致切换次数增加，过长的提交间隔则会导致空闲的CPU空转。
 
-虽然现有工作难以广泛且有效地应用到微内核中，但他们的思路值得我们借鉴，他们的缺陷驱使我们去寻求更好的方案。在硬件方面，一种新型的硬件技术方案——用户态中断逐渐被各个硬件平台（x86，RISC-V）采纳，它通过在CPU中新增中断代理机制和用户态中断的状态寄存器，当中断代理机制检测到状态寄存器发生变化时，会将中断以硬件转发的形式传递给用户态程序，从而绕过内核。该硬件方案已经在Sapphire Rapids x86处理器上和RISCV的N扩展中有了一定的支持，适用范围更加广泛。而在软件方面，异步被广泛用于请求合并和开销均摊，传统类Unix系统提供的类似select IO多路复用接口相对简陋，迫使用户态代码采用事件分发的编程范式来处理异步事件，代码相对复杂，可读性较弱。而新兴的Rust语言对异步有着良好的支持，其零成本抽象的设计也让它作为系统编程语言有着强大的竞争力。使用Rust进行内核和用户态基础库的开发，可以更好地对异步接口进行抽象，改善接口的易用性和代码的可读性。
+虽然现有工作难以广泛且有效地应用到微内核中，但他们的思路值得我们借鉴，他们的缺陷驱使我们去寻求更好的方案。在硬件方面，一种新型的硬件技术方案——用户态中断[20, 21]逐渐被各个硬件平台（x86，RISC-V）采纳，它通过在CPU中新增中断代理机制和用户态中断的状态寄存器，当中断代理机制检测到状态寄存器发生变化时，会将中断以硬件转发的形式传递给用户态程序，从而绕过内核。该硬件方案已经在Sapphire Rapids x86处理器上和RISCV的N扩展中有了一定的支持，适用范围更加广泛。而在软件方面，异步被广泛用于请求合并和开销均摊，传统类Unix系统提供的类似select IO多路复用接口相对简陋，迫使用户态代码采用事件分发的编程范式来处理异步事件，代码相对复杂，可读性较弱。而新兴的Rust[22, 23]语言对异步有着良好的支持，其零成本抽象的设计也让它作为系统编程语言有着强大的竞争力。使用Rust进行内核和用户态基础库的开发，可以更好地对异步接口进行抽象，改善接口的易用性和代码的可读性。
 
 基于上述背景，本文将利用用户态中断机制改造微内核的异步通知机制，并借助Rust语言提供的协程机制和共享内存，在微内核上设计一套异步IPC方案，减少甚至避免特权级的切换。
 
@@ -49,34 +49,34 @@
         <th>优化方法</th><th>详细分类</th></th><th>实例</th><th>缺点</th>
     </tr>
     <tr>
-        <td rowspan="3">减少内核路径</td><td>临时地址映射 </td><td rowspan="1"> ---- </td> <td rowspan="3"> 上下文切换开销已经成为性能瓶颈 </td>
+        <td rowspan="3">减少内核路径</td><td>临时地址映射 </td><td rowspan="1"> [3] </td> <td rowspan="3"> 上下文切换开销已经成为性能瓶颈 </td>
     </tr> 
     <tr>
-        <td>快速路径</td><td rowspan="2"> ----
+        <td>快速路径</td><td rowspan="2"> [3, 4, 24, 25, 26]
     </tr>
     <tr>
         <td>消息寄存器</td>
     </tr>
     <tr>
-        <td rowspan="5">减少上下文切换开销 </td> <td> 消息寄存器 </td>  <td rowspan="2"> ---- </td> <td rowspan="3"> 无法从根本上消除切换开销 </td>
+        <td rowspan="5">减少上下文切换开销 </td> <td> 消息寄存器 </td>  <td rowspan="2"> [3, 4, 24, 25, 26] </td> <td rowspan="3"> 无法从根本上消除切换开销 </td>
     </tr>
     <tr>
         <td>组合系统调用</td>
     </tr>
     <tr>
-        <td>ASID机制</td> <td> ---- </td>
+        <td>ASID机制</td> <td> [4] </td>
     </tr>
     <tr>
-        <td>统一地址空间</td> <td> ---- </td>  <td rowspan="2"> 与微内核设计理念相悖，无法有效地实施到微内核中 </td>
+        <td>统一地址空间</td> <td> [13, 14, 15, 16, 17, 18] </td>  <td rowspan="2"> 与微内核设计理念相悖，无法有效地实施到微内核中 </td>
     </tr>
     <tr>
-        <td>批量系统调用</td> <td> ---- </td> 
+        <td>批量系统调用</td> <td> [19] </td> 
     </tr>
         <tr>
-        <td rowspan="3">硬件优化</td><td> 虚拟化指令 </td><td rowspan="1"> ---- </td> <td rowspan="1"> 仅适用于虚拟化环境 </td>
+        <td rowspan="3">硬件优化</td><td> 虚拟化指令 </td><td rowspan="1"> [11] </td> <td rowspan="1"> 仅适用于虚拟化环境 </td>
     </tr> 
     <tr>
-        <td rowspan="2"> 直接硬件辅助 </td><td rowspan="1"> XPC </td> <td rowspan="1"> 没有硬件标准，没有通用硬件的支持 </td>
+        <td rowspan="2"> 直接硬件辅助 </td><td rowspan="1"> [12] </td> <td rowspan="1"> 没有硬件标准，没有通用硬件的支持 </td>
     </tr> 
     <tr>
 	        <td rowspan="1"> 用户态中断 </td> <td rowspan="1"> --- </td>
@@ -144,7 +144,7 @@ U-notification作为异步通知机制，其传输的数据长度十分有限（
 
 如上图所示，我们将一个IPC消息（请求或响应）定义为 `IPCItem`，它是IPC传递消息的基本单元，为了减少消息读写以及编解码的成本，我们采用定长的消息字段。每个IPCItem的长度被定义为缓存行的整数倍并对齐，消息中的前四个字节用于存储提交该消息的协程id，方便后续通过响应进行唤醒。`msg info` 用于存储消息的元数据，包含了消息类型、长度等。 `extend msg` 将被具体的应用程序根据不同的用户进行定义。
 
-由于共享内存会被一个以上的线程同时访问，因此我们需要设计同步互斥操作来保证数据的读写安全。共享内存的访问极为频繁，因此我们要尽可能避免数据竞争来保证读写性能。我们将请求和响应放到不同的环形缓冲区中，同时不同的发送方和接收方使用不同的环形缓冲区以保证单生产者单消费者的约束，消除过多的数据竞争，最后，我们使用无锁的方式进一步提升环形缓冲区的读写性能。
+由于共享内存会被一个以上的线程同时访问，因此我们需要设计同步互斥操作来保证数据的读写安全。共享内存的访问极为频繁，因此我们要尽可能避免数据竞争来保证读写性能。我们将请求和响应放到不同的环形缓冲区中，同时不同的发送方和接收方使用不同的环形缓冲区以保证单生产者单消费者的约束，消除过多的数据竞争，最后，我们使用无锁的方式[27]进一步提升环形缓冲区的读写性能。
 
 数据被写入环形缓冲区之后，对端何时读取需要我们权衡。一种方式是对端不断地轮询缓冲区是否有数据，但这无疑会浪费CPU资源，并加剧缓冲区的数据竞争，另一种方式写入数据后通过U-notification通知对端读取数据，但我们无法得知对端是否正在读取数据，只能盲目发送，这在很大程度上造成了中断资源的浪费，也导致了对端的执行流被频繁打断，因此我们在缓冲区中维护了对端的recv协程的在线情况，并以此为依据判断是否需要发送U-notification。
 
@@ -205,7 +205,7 @@ async ipc_recv_reply(cap) {
 
 ## 3.3 异步系统调用
 
-虽然现代微内核的大部分系统调用都十分简短，并且在将同步IPC从内核中移除之后，系统调用将不再阻塞任何线程，但对于某些系统级组件（如内存分配器）而言，频繁而大量的系统调用导致的特权级切换开销依旧无法忽视。此外，从广义上看，系统调用属于一种特殊的IPC，即内核作为一个特殊的服务端，与各个应用程序客户端进行通信。以seL4为代表的现代微内核大多将内核实现为互斥访问，即每次只有一个CPU核心能够进入内核，对于共享内存的访问符合单生产者单消费者的抽象，因此从异步IPC扩展到异步系统调用来减少特权级切换是一件极具性价比的事情。
+虽然现代微内核的大部分系统调用都十分简短，并且在将同步IPC从内核中移除之后，系统调用将不再阻塞任何线程，但对于某些系统级组件（如内存分配器）而言，频繁而大量的系统调用导致的特权级切换开销依旧无法忽视。此外，从广义上看，系统调用属于一种特殊的IPC，即内核作为一个特殊的服务端，与各个应用程序客户端进行通信。以seL4为代表的现代微内核大多将内核实现为互斥访问[28]，即每次只有一个CPU核心能够进入内核，对于共享内存的访问符合单生产者单消费者的抽象，因此从异步IPC扩展到异步系统调用来减少特权级切换是一件极具性价比的事情。
 
 我们在内核中设计了一套相似的异步运行时以支持异步系统调用，并在用户态的异步运行时中提供一套重新实现的系统调用库，以相同的函数接口替换同步系统调用。异步系统调用库会将系统调用参数和当前的用户协程号封装为一个IPCItem并写入请求的环形缓冲区中，然后根据内核中recv协程的在线状态来判断是否需要陷入到内核中去唤醒该协程。当前核心只需要在内核返回响应之前等待或执行其他用户态协程即可。
 
@@ -262,23 +262,23 @@ fn wake_syscall_handler() {
 
 # 5. 评估
 
-为了评估ReL4的兼容性，我们在ReL4上成功运行了seL4test并通过了相关的测试用例，而为了评估异步IPC和异步系统调用的效率，我们在ReL4上对比了不同负载下异步IPC和同步IPC的性能，最后构建了一个高并发的TCP Server和内存分配器用于评估异步IPC和异步系统调用在真实应用中的表现。总的实验环境配置参数如下表所示。
+为了评估ReL4的兼容性，我们在ReL4上成功运行了seL4test[29]并通过了相关的测试用例，而为了评估异步IPC和异步系统调用的效率，我们在ReL4上对比了不同负载下异步IPC和同步IPC的性能，最后构建了一个高并发的TCP Server和内存分配器用于评估异步IPC和异步系统调用在真实应用中的表现。总的实验环境配置参数如下表所示。
 
 <table >
     <tr>
-        <td rowspan="3">FPGA</td><td colspan="2">Zynq UltraScale + XCZU15EG-2FFVB1156 MPSoC </td>
+        <td rowspan="3">FPGA</td><td colspan="2">Zynq UltraScale + XCZU15EG-2FFVB1156 MPSoC[31] </td>
     </tr> 
     <tr>
-        <td>RISC-V  soft IP core</td><td> rocket-chip with N  extension, 4 Core, 100MHz</td>
+        <td>RISC-V  soft IP core</td><td> rocket-chip[30] with N  extension, 4 Core, 100MHz</td>
     </tr>
     <tr>
-        <td>Ethernet  IP core</td> <td>Xilinx AXI 1G/2.5G  Ethernet Subsystem (1Gbps) </td>
+        <td>Ethernet  IP core</td> <td>Xilinx AXI 1G/2.5G  Ethernet Subsystem (1Gbps)[32] </td>
     </tr>
     <tr>
         <td rowspan="1">Operating  System </td> <td colspan="2"> ReL4 </td> 
     </tr>
     <tr>
-        <td>Network  Stack</td> <td colspan="2"> smoltcp </td> 
+        <td>Network  Stack</td> <td colspan="2"> smoltcp[33] </td> 
     </tr>
 </table>
 
@@ -319,3 +319,41 @@ fn wake_syscall_handler() {
 本文提出的异步IPC和异步系统调用主要是为了提升高频度、上下文无关的IPC和系统调用请求的整体处理性能，因此在并发度高的系统中拥有卓越的表现，此外，在并发度低的情况下，我们仍然通过用户态中断这种开销相对较小的方式来取代特权级切换，从而在一定程度上弥补了低并发度情况下引入异步运行时带来的额外开销。
 
 然而我们仍然可以看出，在并发度较低的场景下，我们的运行时开销仍然会导致性能略低于同步，在未来，我们期望用硬件实现异步运行时中的频繁操作（如fetch、wake等），从而尽可能消除运行时对性能的影响，在低并发度的情况下也能取得良好的性能。
+
+
+## 7. 参考文献
+
+[1] Roch B. Monolithic kernel vs. Microkernel[J]. TU Wien, 2004, 1.
+[2] Liedtke J. Toward real microkernels[J]. Communications of the ACM, 1996, 39(9): 70-77.
+[3] Liedtke J. Improving IPC by kernel design[C]//Proceedings of the fourteenth ACM symposium on Operating systems principles. 1993: 175-188.
+[4] Klein G, Elphinstone K, Heiser G, et al. seL4: Formal verification of an OS kernel[C]//Proceedings of the ACM SIGOPS 22nd symposium on Operating systems principles. 2009: 207-220.
+[5] Jeff Caruso. 1 million IOPS demonstrated. https://www.networkworld.com/article/2244085/1-million- iops-demonstrated.html. Accessed: 2021-12-01.
+[6] Lipp M, Schwarz M, Gruss D, et al. Meltdown[J]. arXiv preprint arXiv:1801.01207, 2018.
+[7] Kocher P, Horn J, Fogh A, et al. Spectre attacks: Exploiting speculative execution[J]. Communications of the ACM, 2020, 63(7): 93-101
+[8] The kernel development community. Page table isolation (PTI). https://www.kernel.org/doc/html/latest/x86/pti.html. Accessed: 2021-12-01
+[9] Blackham B, Shi Y, Heiser G. Improving interrupt response time in a verifiable protected microkernel[C]//Proceedings of the 7th ACM european conference on Computer Systems. 2012: 323-336.
+[10] Heiser G, Elphinstone K. L4 microkernels: The lessons from 20 years of research and deployment[J]. ACM Transactions on Computer Systems (TOCS), 2016, 34(1): 1-29
+[11] Mi Z, Li D, Yang Z, et al. Skybridge: Fast and secure inter-process communication for microkernels[C]//Proceedings of the Fourteenth EuroSys Conference 2019. 2019: 1-15.
+[12] Du D, Hua Z, Xia Y, et al. XPC: architectural support for secure and efficient cross process call[C]//Proceedings of the 46th International Symposium on Computer Architecture. 2019: 671-684.
+[13] Kuo H C, Williams D, Koller R, et al. A linux in unikernel clothing[C]//Proceedings of the Fifteenth European Conference on Computer Systems. 2020: 1-15
+[14] Olivier P, Chiba D, Lankes S, et al. A binary-compatible unikernel[C]//Proceedings of the 15th ACM SIGPLAN/SIGOPS International Conference on Virtual Execution Environments. 2019: 59-73.
+[15] Yu K, Zhang C, Zhao Y. Web Service Appliance Based on Unikernel[C]//2017 IEEE 37th International Conference on Distributed Computing Systems Workshops (ICDCSW). IEEE, 2017: 280-282.
+[16] Zhou Z, Bi Y, Wan J, et al. Userspace Bypass: Accelerating Syscall-intensive Applications[C]//17th USENIX Symposium on Operating Systems Design and Implementation (OSDI 23). 2023: 33-49.
+[17] Jeong E Y, Wood S, Jamshed M, et al. {mTCP}: a Highly Scalable User-level {TCP} Stack for Multicore Systems[C]//11th USENIX Symposium on Networked Systems Design and Implementation (NSDI 14). 2014:489-502.
+[18] Yang Z, Harris J R, Walker B, et al. SPDK: A development kit to build high performance storage applications[C]//2017 IEEE International Conference on Cloud Computing Technology and Science (CloudCom). IEEE, 2017: 154-161.
+[19] Soares L, Stumm M. {FlexSC}: Flexible system call scheduling with {Exception-Less} system calls[C]//9th USENIX Symposium on Operating Systems Design and Implementation (OSDI 10). 2010.
+[20] Nassif N, Munch A O, Molnar C L, et al. Sapphire rapids: The next-generation Intel Xeon scalable processor[C]//2022 IEEE International Solid-State Circuits Conference (ISSCC). IEEE, 2022, 65: 44-46.
+[21] Waterman A, Asanovic K. The RISC-V instruction set manual, volume II: Privileged architecture[J]. RISC-V Foundation, 2019: 1-4.
+[22] Levy A, Andersen M P, Campbell B, et al. Ownership is theft: Experiences building an embedded OS in Rust[C]//Proceedings of the 8th Workshop on Programming Languages and Operating Systems. 2015: 21-26.
+[23] Balasubramanian A, Baranowski M S, Burtsev A, et al. System programming in rust: Beyond safety[C]//Proceedings of the 16th workshop on hot topics in operating systems. 2017: 156-161.
+[24] van Schaik C, Leslie B, Dannowski U, et al. NICTA L4-embedded kernel reference manual, version NICTA N1[R]. Technical report, National ICT Australia, October 2005. Latest version available from: http://www.ertos. nicta. com. au/research/l4.
+[25]  Heiser G, Leslie B. The OKL4 Microvisor: Convergence point of microkernels and hypervisors[C]//Proceedings of the first ACM asia-pacific workshop on Workshop on systems. 2010:19-24.
+[26] Smejkal T, Lackorzynski A, Engel B, et al. Transactional ipc in fiasco. oc[J]. OSPERT 2015, 2015: 19.
+[27] Rajwar R, Goodman J R. Transactional lock-free execution of lock-based programs[J]. ACM SIGOPS Operating Systems Review, 2002, 36(5): 5-17.
+[28] Peters S, Danis A, Elphinstone K, et al. For a microkernel, a big lock is fine[C]//Proceedings of the 6th Asia-Pacific Workshop on Systems. 2015: 1-7.
+[29] General, N., & Data61. (n.d.). seL4test project. *seL4 Documentation*. https://docs.sel4.systems/projects/sel4test
+[30] Krste Asanović, Rimas Avizienis, Jonathan Bachrach, Scott Beamer, David Biancolin, Christopher Celio, Henry Cook, Daniel Dabbelt, John Hauser, Adam Izraelevitz, Sagar Karandikar, Ben Keller, Donggyu Kim, John Koenig, Yunsup Lee, Eric Love, Martin Maas, Albert Magyar, Howard Mao, Miquel Moreto, Albert Ou, David A. Patterson, Brian Richards, Colin Schmidt, Stephen Twigg, Huy Vo, and Andrew Waterman. 2016. The Rocket Chip Generator. Technical Report UCB EECS-2016-17. EECS Department, University of California, Berkeley. http://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.html
+[31] 2022. Zynq UltraScale+ MPSoC Data Sheet: Overview (DS891). https://docs.xilinx.
+com/api/khub/documents/sbPbXcMUiRSJ2O5STvuGNQ/content
+[32] 2023. AXI 1G/2.5G Ethernet Subsystem v7.2 Product Guide. https://docs.xilinx.com/r/en-US/pg138-axi-ethernet
+[33] smoltcp rs. 2023. smoltcp. https://github.com/smoltcp-rs/smoltcp
