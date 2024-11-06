@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.figure(figsize=(7, 4))
+plt.rc('font', family='Times New Roman')
+plt.figure(figsize=(8, 5))
 # 构造x轴刻度标签、数据
 labels = ['8', '16', '32', '64', '128', '256', '512']
 sync = [8172, 8172, 8172, 8172, 8172, 8172, 8172]
@@ -18,13 +19,14 @@ plt.bar(x - 1 * width, sync, width, label='sync', color="darkseagreen")
 plt.bar(x, async_up, width, label='async-up', color="steelblue")
 plt.bar(x + 1 * width, async_smp, width, label='async-smp', color="brown")
 plt.ylabel('cycles')
+plt.xlabel('concurrency')
 plt.title('Average number of cycles per request')
 # x轴刻度标签位置不进行计算
 plt.xticks(x, labels=labels)
 plt.legend(loc="upper left")
 
 ax2 = plt.twinx()
-ax2.set_ylabel("S-trap frequency")
+ax2.set_ylabel("S-trap frequency(trap count / syscall count)")
 ax2.set_ylim([0, 0.15])
 plt.plot(labels, server_up, "r", marker='.', c='r', ms=5, linewidth='1', label="server-up")
 plt.plot(labels, server_smp, "r", marker='.', c='b', ms=5, linewidth='1', label="server-smp")

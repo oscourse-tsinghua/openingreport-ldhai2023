@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+plt.rc('font', family='Times New Roman')
 plt.figure(figsize=(8, 4))
 # 构造x轴刻度标签、数据
 labels = ['1', '2', '4', '8', '16', '32']
@@ -24,6 +25,7 @@ plt.bar(x + 0.5 * width, async_up, width, label='async-up', color="steelblue")
 plt.bar(x + 1.5 * width, async_smp, width, label='async-smp', color="brown")
 
 plt.ylabel('throughput(pps)')
+plt.xlabel('connection nums')
 plt.title('TCP server throughput')
 # x轴刻度标签位置不进行计算
 plt.xticks(x, labels=labels)
