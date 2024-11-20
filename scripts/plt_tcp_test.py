@@ -43,4 +43,4 @@ plt.legend(loc="upper right")
 
 # plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9, wspace=0.2, hspace=0.35)
 # plt.show()
-plt.savefig("tcp_test.png")
+plt.savefig("tcp_test.svg")

@@ -3,6 +3,8 @@ import numpy as np
 
 plt.rc('font', family='Times New Roman')
 plt.figure(figsize=(8, 5))
+plt.rcParams['xtick.direction'] = 'in'
+plt.rcParams['ytick.direction'] = 'in'
 # 构造x轴刻度标签、数据
 labels = ['8', '16', '32', '64', '128', '256', '512']
 sync = [8172, 8172, 8172, 8172, 8172, 8172, 8172]
@@ -18,19 +20,19 @@ width = 0.3  # 柱子的宽度
 plt.bar(x - 1 * width, sync, width, label='sync', color="darkseagreen")
 plt.bar(x, async_up, width, label='async-up', color="steelblue")
 plt.bar(x + 1 * width, async_smp, width, label='async-smp', color="brown")
-plt.ylabel('cycles')
+plt.ylabel('单个系统调用的占用的平均CPU周期数')
 plt.xlabel('concurrency')
-plt.title('Average number of cycles per request')
+# plt.title('单个系统调用的占用的平均CPU周期数和')
 # x轴刻度标签位置不进行计算
 plt.xticks(x, labels=labels)
 plt.legend(loc="upper left")
 
 ax2 = plt.twinx()
-ax2.set_ylabel("S-trap frequency(trap count / syscall count)")
+ax2.set_ylabel("内核陷入频率(trap count / syscall count)")
 ax2.set_ylim([0, 0.15])
 plt.plot(labels, server_up, "r", marker='.', c='r', ms=5, linewidth='1', label="server-up")
 plt.plot(labels, server_smp, "r", marker='.', c='b', ms=5, linewidth='1', label="server-smp")
 plt.legend(loc="upper right")
 
 # plt.show()
-plt.savefig("syscall_test.png")
+plt.savefig("syscall_test.svg")

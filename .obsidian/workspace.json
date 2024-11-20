@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "讨论记录/20241114-向勇的修改意见.md",
+                "file": "paper/ReL4, 高性能异步微内核设计与实现.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "20241114-向勇的修改意见"
+              "title": "ReL4, 高性能异步微内核设计与实现"
             }
           }
         ]
@@ -164,15 +164,18 @@
   },
   "active": "1eab6b751cf8b2ff",
   "lastOpenFiles": [
-    "paper/ReL4, 高性能异步微内核设计与实现.md",
-    "讨论记录/20241114-向勇的修改意见.md",
-    "技术文档/异步微内核ReL4/大纲.md",
+    "scripts/syscall_test.svg",
+    "scripts/tcp_test.svg",
+    "scripts/ipc_test.svg",
     "paper/~$240222144710.docx",
+    "讨论记录/20241114-向勇的修改意见.md",
+    "paper/ReL4, 高性能异步微内核设计与实现.md",
+    "讨论记录/20241018-向勇的修改意见.md",
+    "技术文档/异步微内核ReL4/大纲.md",
     "技术文档/基于用户态中断的微内核通知机制.md",
     "技术文档/异步微内核ReL4/异步微内核ReL4.md",
     "技术文档/异步微内核ReL4",
     "paper/20240222144710.docx",
-    "讨论记录/20241018-向勇的修改意见.md",
     "测试/~$IPC性能.xlsx",
     "讨论记录/20240619-向勇的修改意见.md",
     "讨论记录/20240228-与廖东海讨论微内核.md",
@@ -195,11 +198,9 @@
     "images/async_syscall.drawio.crswap",
     "images/async_syscall.drawio",
     "images/rel4_ntfn_cap_graph.png",
-    "images/shared_buffer.png",
     "images/async_framework.drawio.crswap",
     "images/shared_buffer.drawio",
     "images/uintr_for_ntfn.drawio.crswap",
-    "scripts/syscall_test.png",
     "技术文档/微内核异步设计方案v2.md",
     "测试/测试结果-qemu.md",
     "测试/测试方案.md",
