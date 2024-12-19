@@ -20,7 +20,7 @@ width = 0.3  # 柱子的宽度
 plt.bar(x - 1 * width, sync, width, label='sync', color="darkseagreen")
 plt.bar(x, async_up, width, label='async-up', color="steelblue")
 plt.bar(x + 1 * width, async_smp, width, label='async-smp', color="brown")
-plt.ylabel('单个系统调用的占用的平均CPU周期数')
+plt.ylabel('The average CPU cycles used by a single system call')
 plt.xlabel('concurrency')
 # plt.title('单个系统调用的占用的平均CPU周期数和')
 # x轴刻度标签位置不进行计算
@@ -28,10 +28,10 @@ plt.xticks(x, labels=labels)
 plt.legend(loc="upper left")
 
 ax2 = plt.twinx()
-ax2.set_ylabel("内核陷入频率(trap count / syscall count)")
+ax2.set_ylabel("Trapped frequency(trap count / syscall count)")
 ax2.set_ylim([0, 0.15])
-plt.plot(labels, server_up, "r", marker='.', c='r', ms=5, linewidth='1', label="server-up")
-plt.plot(labels, server_smp, "r", marker='.', c='b', ms=5, linewidth='1', label="server-smp")
+plt.plot(labels, server_up, "r", marker='.', c='b', ms=5, linewidth='1', label="server-up")
+plt.plot(labels, server_smp, "r", marker='.', c='r', ms=5, linewidth='1', label="server-smp")
 plt.legend(loc="upper right")
 
 # plt.show()

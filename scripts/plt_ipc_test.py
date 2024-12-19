@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.font_manager import FontProperties
 
-plt.rc('font', family='Times New Roman')
+plt.rc('font', family='宋体')
 plt.figure(figsize=(14, 5))
 # 构造x轴刻度标签、数据
 labels = ['1', '2', '4', '8', '16', '32']
@@ -46,7 +47,7 @@ concurrency_16 = [0.1762, 0.1303, 0.0764, 0]
 concurrency_32 = [0.1685, 0.0981, 0, 0]
 plt.ylim([0, 0.3])
 plt.xlabel('服务端每次IPC请求的矩阵乘法的计算规模')
-plt.title('(2) 用户态中断频率随服务端负载的变化图')
+plt.title('(2)')
 plt.plot(labels, concurrency_8, "r", marker='.', c='black', ms=5, linewidth='1', label="concurrency 8")
 plt.plot(labels, concurrency_16, "r", marker='.', c='darkseagreen', ms=5, linewidth='1', label="concurrency 16")
 plt.plot(labels, concurrency_32, "r", marker='.', c='steelblue', ms=5, linewidth='1', label="concurrency 32")
