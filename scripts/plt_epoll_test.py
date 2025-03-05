@@ -12,7 +12,7 @@ lantency = [10559, 6968, 8172]
 CPU_utilization = [0.97, 0.57, 0.92]
 width = 0.3  # 柱子的宽度
 
-fig, ax1 = plt.subplots(figsize=(4, 5))
+fig, ax1 = plt.subplots(figsize=(5, 5))
 x = np.arange(len(labels))  # x轴刻度标签位置
 plt.xticks(x, labels=labels)
 ax1.bar(x - width / 2, lantency, width, label='lantency', color = "black", edgecolor='black')
