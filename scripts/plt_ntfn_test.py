@@ -8,7 +8,7 @@ plt.rcParams['ytick.direction'] = 'in'
 x = ["ntfn\nup", "U-ntfn\nup", "ntfn\nsmp", "U-ntfn\nsmp"]
 # 
 context_switch = [3405 ,2001, 3506, 2030]
-page_table_switch = [5044, 0, 5157, 0]
+page_table_switch = [5044, 2001, 5157, 0]
 hw_interrupt = [0, 2733, 3019, 2655]
 kernel_schedule = [2007, 0, 2677, 0]
 
