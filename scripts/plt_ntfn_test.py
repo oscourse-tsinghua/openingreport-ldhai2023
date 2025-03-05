@@ -5,19 +5,23 @@ plt.rc('font',family='Times New Roman')
 plt.rcParams['xtick.direction'] = 'in'
 plt.rcParams['ytick.direction'] = 'in'
 
-x = ["ntfn-up", "U-ntfn-up", "ntfn-smp", "U-ntfn-smp"]
+x = ["ntfn\nup", "U-ntfn\nup", "ntfn\nsmp", "U-ntfn\nsmp"]
 # 
 context_switch = [3405 ,2001, 3506, 2030]
-page_table_switch = [6044, 0, 6157, 0]
-hw_interrupt = [0, 2733, 10029, 2655]
+page_table_switch = [5044, 0, 5157, 0]
+hw_interrupt = [0, 2733, 3019, 2655]
+kernel_schedule = [2007, 0, 2677, 0]
 
-plt.subplot(121)
+ax = plt.subplot(121)
 plt.bar(x, context_switch,width=0.4,label='context switch',color='black',edgecolor='grey',zorder=5)
 plt.bar(x, page_table_switch,width=0.4,bottom=context_switch,label='page table switch',color='dimgray',edgecolor='grey',zorder=5)
 plt.bar(x, hw_interrupt,width=0.4,bottom=[x + y for x, y in zip(context_switch, page_table_switch)],label='hardware cost',color='white',edgecolor='grey',zorder=5)
+plt.bar(x, kernel_schedule,width=0.4,bottom=
+        [x + y + z for x, y, z in zip(context_switch, page_table_switch, hw_interrupt)],label='kernel schedule',color='darkgray',edgecolor='grey',zorder=5)
 plt.tick_params(axis='x',length=0)
 plt.ylabel('CPU cycles')
-plt.legend(loc="upper left")
+ax.set_ylim([1000, 20000])
+ax.legend(loc='upper left')
 
 
 
