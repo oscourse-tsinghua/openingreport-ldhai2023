@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 plt.rc('font', family='Times New Roman')
+plt.rcParams['xtick.direction'] = 'in'
+plt.rcParams['ytick.direction'] = 'in'
 plt.figure(figsize=(8, 4))
 # 构造x轴刻度标签、数据
 labels = ['1', '2', '4', '8', '16', '32']
@@ -19,14 +21,13 @@ async_smp_ms = [0.7, 0.97, 1.89, 3.81, 8.39, 22.2]
 x = np.arange(len(labels))  # x轴刻度标签位置
 width = 0.2  # 柱子的宽度
 # 计算每个柱子在x轴上的位置，保证x轴刻度标签居中
-plt.bar(x - 1.5 *width, sync_up, width, label='sync-up', color="black")
-plt.bar(x - 0.5 * width, sync_smp, width, label='sync-smp', color="darkseagreen")
-plt.bar(x + 0.5 * width, async_up, width, label='async-up', color="steelblue")
-plt.bar(x + 1.5 * width, async_smp, width, label='async-smp', color="brown")
+plt.bar(x - 1.5 *width, sync_up, width, label='sync-up', color="black", edgecolor='black')
+plt.bar(x - 0.5 * width, sync_smp, width, label='sync-smp', color="dimgray", edgecolor='black')
+plt.bar(x + 0.5 * width, async_up, width, label='async-up', color="darkgray", edgecolor='black')
+plt.bar(x + 1.5 * width, async_smp, width, label='async-smp', color="gainsboro", edgecolor='black')
 
 plt.ylabel('throughput(pps)')
 plt.xlabel('connection nums')
-plt.title('TCP server throughput')
 # x轴刻度标签位置不进行计算
 plt.xticks(x, labels=labels)
 plt.legend(loc="upper left")
@@ -34,10 +35,10 @@ plt.legend(loc="upper left")
 ax2 = plt.twinx()
 ax2.set_ylabel("delay(ms)")
 ax2.set_ylim([0, 60])
-plt.plot(labels, sync_up_ms, "r", marker='.', c='r', ms=5, linewidth='1', label="sync-up")
-plt.plot(labels, sync_smp_ms, "r", marker='.', c='b', ms=5, linewidth='1', label="sync-smp")
-plt.plot(labels, async_up_ms, "r", marker='.', c='magenta', ms=5, linewidth='1', label="async-up")
-plt.plot(labels, async_smp_ms, "r", marker='.', c='lawngreen', ms=5, linewidth='1', label="async-smp")
+plt.plot(labels, sync_up_ms, c='black', ms=5, linewidth='1', label="sync-up", marker='.')
+plt.plot(labels, sync_smp_ms, c='black', ms=5, linewidth='1', label="sync-smp", marker='.', linestyle='-.')
+plt.plot(labels, async_up_ms, c='black', ms=5, linewidth='1', label="async-up", marker='.', linestyle='dotted')
+plt.plot(labels, async_smp_ms, c='black', ms=5, linewidth='1', label="async-smp", marker='.', linestyle='dashed')
 plt.legend(loc="upper right")
 
 
