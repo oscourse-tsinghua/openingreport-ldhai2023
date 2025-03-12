@@ -35,4 +35,4 @@ plt.plot(labels, server_smp, marker='.', c='black', linestyle='--', ms=5, linewi
 plt.legend(loc="upper right")
 
 # plt.show()
-plt.savefig("syscall_test.svg")
+plt.savefig("syscall_test.png")
