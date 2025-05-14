@@ -21,10 +21,10 @@ async_smp_ms = [0.7, 0.97, 1.89, 3.81, 8.39, 22.2]
 x = np.arange(len(labels))  # x轴刻度标签位置
 width = 0.2  # 柱子的宽度
 # 计算每个柱子在x轴上的位置，保证x轴刻度标签居中
-plt.bar(x - 1.5 *width, sync_up, width, label='sync-up', color="black", edgecolor='black')
-plt.bar(x - 0.5 * width, sync_smp, width, label='sync-smp', color="dimgray", edgecolor='black')
-plt.bar(x + 0.5 * width, async_up, width, label='async-up', color="darkgray", edgecolor='black')
-plt.bar(x + 1.5 * width, async_smp, width, label='async-smp', color="gainsboro", edgecolor='black')
+plt.bar(x - 1.5 *width, sync_up, width, label='sync-up', color="brown", edgecolor='black')
+plt.bar(x - 0.5 * width, sync_smp, width, label='sync-smp', color="darkorange", edgecolor='black')
+plt.bar(x + 0.5 * width, async_up, width, label='async-up', color="palegreen", edgecolor='black')
+plt.bar(x + 1.5 * width, async_smp, width, label='async-smp', color="dodgerblue", edgecolor='black')
 
 plt.ylabel('throughput(pps)')
 plt.xlabel('connection nums')
@@ -44,4 +44,4 @@ plt.legend(loc="upper right")
 
 # plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9, wspace=0.2, hspace=0.35)
 # plt.show()
-plt.savefig("tcp_test.svg")
+plt.savefig("tcp_test.pdf")

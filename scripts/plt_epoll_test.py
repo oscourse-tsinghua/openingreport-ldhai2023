@@ -25,4 +25,4 @@ plt.bar(x + width / 2, CPU_utilization, width, label='CPU utilization', color = 
 
 fig.legend(loc='upper left', bbox_to_anchor=(0.1, 1), bbox_transform=ax1.transAxes)
 
-plt.savefig("epoll_test.svg")
+plt.savefig("epoll_test.pdf")
