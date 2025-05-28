@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-plt.rc('font', family='Times New Roman')
+plt.rcParams['font.sans-serif'] = ['SimSun']
+plt.rcParams['axes.unicode_minus'] = False
 plt.figure(figsize=(8, 5))
 plt.rcParams['xtick.direction'] = 'in'
 plt.rcParams['ytick.direction'] = 'in'
@@ -37,7 +38,7 @@ plt.xticks(x, labels=labels)
 plt.legend(loc="upper left")
 
 ax2 = plt.twinx()
-ax2.set_ylabel("Trapped frequency(trap count / syscall count)")
+ax2.set_ylabel("陷入频率")
 ax2.set_ylim([0, 1])
 plt.plot(labels, server_up, marker='.', c='black', ms=5, linewidth='1', label="server-up")
 plt.plot(labels, server_smp, marker='.', c='black', linestyle='--', ms=5, linewidth='1', label="server-smp")
