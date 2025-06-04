@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "paper/学位论文大纲.md",
+                "file": "paper/硕士毕业论文中的相关代码仓库和结果记录.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "学位论文大纲"
+              "title": "硕士毕业论文中的相关代码仓库和结果记录"
             }
           }
         ]
@@ -165,6 +165,8 @@
   },
   "active": "1eab6b751cf8b2ff",
   "lastOpenFiles": [
+    "paper/学位论文大纲.md",
+    "paper/硕士毕业论文中的相关代码仓库和结果记录.md",
     "scripts/tcp_test.pdf",
     "images/tcp_test_framework.drawio.crswap",
     "images/tcp_test_framework.drawio",
@@ -176,14 +178,12 @@
     "测试/测试方案.md",
     "测试/测试结果-qemu.md",
     "paper/ReL4, 高性能异步微内核设计与实现.md",
-    "paper/学位论文大纲.md",
     "paper/小型微型计算机投稿信息.md",
     "paper/计算机工程与应用-审稿意见.md",
     "paper/期刊信息.md",
     "images/async_ipc.drawio.crswap",
     "images/async_ipc.drawio",
     "images/TAIC.drawio.crswap",
-    "images/TAIC.drawio",
     "讨论记录/20250306-向勇的修改意见.md",
     "讨论记录/20250124-向勇的修改意见.md",
     "技术文档/TAIC移植方案.md",
